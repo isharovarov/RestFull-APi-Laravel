@@ -22,14 +22,14 @@ Route::get('documents/{document}/comments', 'DocumentRelationshipController@comm
 
 // *** Users *** //
 Route::apiResource('users', 'UserController');
-Route::get('users/{user}/relationships/documents', 'UserRelationshipController@author')->name('users.relationships.documents');
-Route::get('users/{user}/author', 'UserRelationshipController@author')->name('documents.author');
+Route::get('users/{user}/relationships/documents', 'UserRelationshipController@documents')->name('users.relationships.documents');
+Route::get('users/{user}/documents', 'UserRelationshipController@documents')->name('users.documents');
 Route::get('users/{user}/relationships/comments', 'UserRelationshipController@comments')->name('users.relationships.comments');
-Route::get('users/{user}/comments', 'UserRelationshipController@comments')->name('documents.comments');
+Route::get('users/{user}/comments', 'UserRelationshipController@comments')->name('users.comments');
 
 // *** Comments *** //
 Route::apiResource('comments', 'CommentController');
-Route::get('documents/{document}/relationships/author', 'DocumentRelationshipController@author')->name('documents.relationships.author');
-Route::get('documents/{document}/author', 'DocumentRelationshipController@author')->name('documents.author');
-Route::get('documents/{document}/relationships/comments', 'DocumentRelationshipController@comments')->name('documents.relationships.comments');
-Route::get('documents/{document}/comments', 'DocumentRelationshipController@comments')->name('documents.comments');
+Route::get('comments/{comment}/relationships/users', 'CommentRelationshipController@author')->name('comments.relationships.users');
+Route::get('comments/{comment}/users', 'CommentRelationshipController@author')->name('comments.users');
+Route::get('comments/{comment}/relationships/documents', 'CommentRelationshipController@comments')->name('comments.relationships.documents');
+Route::get('comments/{comment}/documents', 'CommentRelationshipController@comments')->name('comments.documents');
